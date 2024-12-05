@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Lista de Pessoas</title>
+ 
+    
+</head>
+<body>
+    <div class="background" id="modal">
+        <div class="container">
+           
+            <button class="close-modal" onclick="fecharModal()">X</button>
+    
+            <form action="">
+                <label>
+                    <h4>Nome</h4>
+                    <input type="text" name="nome" id="nome">
+                </label>
+    
+                <label>
+                    <h4>Categoria do instrumento</h4>
+                    <select id="cat">
+                    </select>
+                </label>
+    
+                <button type="submit"  id="enviar">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="backgroundEdit" id="modalEdit">
+        <div class="container">
+            
+            <button class="close-modal" onclick="fecharModalEdit()">X</button>
+    
+            <form action="#">
+                <input type="hidden" value='' name='id' id="idPessoa">                
+                <label>
+                    <h4>Nome</h4>
+                    <input type="text" name="nome" id="nomeEdit">
+                </label>
+    
+                <label>
+                    <h4>Categoria do instrumento</h4>
+                    <select id="catEdit">                        
+                        
+                    </select>
+                </label>
+    
+                <button type="submit"  id="enviarEdit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    
+    <h1>Lista aaa de Pessoas</h1>
+    <table id="pessoaTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Instrumento</th>
+                <th>Categoria do Instrumento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Os dados serão preenchidos dinamicamente -->
+        </tbody>
+    </table>
+
+
+    <button id="openModal"onclick="abrirModal()">Adicionar novo</button>
+
+    <script src="script/script.js"></script>
+    <script src="script/getReq.js"></script>
+    <script src="script/postReq.js"></script>
+    <script src="script/deleteReq.js"></script>
+    <script src="script/putReq.js"></script>
+</body>
+</html>

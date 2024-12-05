@@ -15,9 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PessoaService {
 
-    @Autowired
     private final PessoaRepository pessoaRepository;
-
     private final InstrumentoService instrumentoService;
 
     public List<Pessoa> findALl(){
@@ -36,14 +34,25 @@ public class PessoaService {
 
     public Pessoa replace(Long id, PessoaPutRequestBody pessoaPutRequestBody){
         Pessoa savedPessoa = findById(id);
-        Pessoa pessoa = PessoaMapper.INSTANCE.putToPessoa(pessoaPutRequestBody);
+        Pessoa pessoa = Pessoa.builder()
+                .id(savedPessoa.getId())
+                .nome(pessoaPutRequestBody.getNome())
+                .instrumento(
+                        instrumentoService.FindByIdOrElseThrowBadRequest(
+                                pessoaPutRequestBody.getInstrumentoId()))
+                .build();
         pessoa.setId(savedPessoa.getId());
         return pessoaRepository.save(pessoa);
     }
 
     public Pessoa post(PessoaPostRequestBody pessoaPostRequestBody){
 
-        return pessoaRepository.save(PessoaMapper.INSTANCE.postToPessoa(pessoaPostRequestBody));
+        System.out.println(pessoaPostRequestBody.getInstrumentoId());
+        Pessoa pessoa = Pessoa.builder()
+                .nome(pessoaPostRequestBody.getNome())
+                .instrumento(instrumentoService.FindByIdOrElseThrowBadRequest(pessoaPostRequestBody.getInstrumentoId()))
+                .build();
+        return pessoaRepository.save(pessoa);
     }
 
 

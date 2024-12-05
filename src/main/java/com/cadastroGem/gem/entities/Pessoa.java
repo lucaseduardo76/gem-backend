@@ -13,6 +13,7 @@ import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
+@Data
 @Builder
 @AllArgsConstructor
 @Table(name = "tb_pessoa")
@@ -34,31 +35,5 @@ public class Pessoa {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Instrumento getInstrumento() {
-        return instrumento;
-    }
-
-    public void setInstrumento(Instrumento instrumento) {
-        this.instrumento = instrumento;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(id, pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(instrumento, pessoa.instrumento);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, instrumento);
-    }
 }

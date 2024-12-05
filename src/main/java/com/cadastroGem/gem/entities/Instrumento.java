@@ -3,18 +3,17 @@ package com.cadastroGem.gem.entities;
 import com.cadastroGem.gem.enums.CategoriaInstrumento;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
 @Entity
 @Table(name = "tb_instrumento")
 public class Instrumento {
@@ -28,5 +27,6 @@ public class Instrumento {
     @JsonIgnore
     @OneToMany(mappedBy = "instrumento")
     private List<Pessoa> pessoa = new ArrayList<>();
+
 
 }
